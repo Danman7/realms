@@ -1,0 +1,28 @@
+import * as CSS from 'csstype'
+
+export const colorNames = ['primary', 'secondary'] as const
+export type ColorName = typeof colorNames[number]
+
+interface Theme {
+  colors: {
+    [name in
+      | ColorName
+      | 'gray'
+      | 'light'
+      | 'gray'
+      | 'text'
+      | 'border'
+      | 'book-background'
+      | 'map-land'
+      | 'map-region-border'
+      | 'map-shoreline']: CSS.Property.Color
+  }
+  lineHeights: {
+    [name in 'body' | 'heading']: number
+  }
+  fontSizes: string[]
+  fontWeights: {
+    [name in 'thin' | 'regular' | 'bold']: number
+  }
+  boxShadow: CSS.Property.BoxShadow
+}
