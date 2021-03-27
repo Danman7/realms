@@ -1,4 +1,4 @@
-import './style/game-icons.css'
+import './asset/icons.css'
 
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom'

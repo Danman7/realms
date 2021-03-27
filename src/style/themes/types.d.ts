@@ -9,10 +9,9 @@ interface Theme {
       | ColorName
       | 'gray'
       | 'light'
-      | 'gray'
       | 'text'
       | 'border'
-      | 'book-background'
+      | 'background'
       | 'map-land'
       | 'map-region-border'
       | 'map-shoreline']: CSS.Property.Color

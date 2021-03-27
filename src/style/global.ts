@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 import { Theme } from './themes/types'
 
@@ -60,16 +60,4 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
       font-size: ${({ theme }) => theme.fontSizes[0]};
     }
   }
-`
-
-export const PaperBox = styled.div`
-  border-bottom-left-radius: 15px 255px;
-  border-bottom-right-radius: 225px 15px;
-  border-top-left-radius: 255px 15px;
-  border-top-right-radius: 15px 225px;
-  border: 2px solid ${(props) => props.theme.colors.border};
-  transition: all 0.1s ease-in-out 0s;
-  align-self: center;
-  display: inline-block;
-  outline: none;
 `

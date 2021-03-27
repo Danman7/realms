@@ -10,7 +10,7 @@ export const defaultTheme: Theme = {
     light: '#eee',
     text: transparentize(0.2, '#322'),
     border: transparentize(0.9, '#000'),
-    'book-background': '#fff9f9',
+    background: '#fff9f9',
     'map-land': '#82A775',
     'map-region-border': '#64513B',
     'map-shoreline': '#1f3846',
