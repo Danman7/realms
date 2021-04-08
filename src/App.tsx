@@ -1,5 +1,5 @@
 import { Battlefield } from 'Battlefield'
-import { testBattleRegion } from 'mocks'
+import { testBattleRegion } from 'shared/mocks'
 
 function App() {
   return (

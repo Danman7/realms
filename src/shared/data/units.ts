@@ -1,5 +1,5 @@
-import * as UnitTraits from 'data/unitTraits'
 import { GameTypes } from 'Game'
+import * as UnitTraits from 'shared/data/unitTraits'
 
 export const Pikemen: GameTypes.UnitBase = {
   name: 'Pikemen',

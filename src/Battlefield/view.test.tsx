@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { testBattleRegion, testPlayer1, testPlayer2 } from 'mocks'
+import { testBattleRegion, testPlayer1, testPlayer2 } from 'shared/mocks'
 import { defaultTheme } from 'style/themes'
 import { ThemeProvider } from 'styled-components'
 

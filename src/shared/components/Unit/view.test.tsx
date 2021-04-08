@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { testUnit1 } from 'mocks'
+import { testUnit1 } from 'shared/mocks'
 import { defaultTheme } from 'style/themes'
 import { ThemeProvider } from 'styled-components'
 

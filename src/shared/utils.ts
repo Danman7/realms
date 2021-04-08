@@ -1,7 +1,7 @@
 import * as CSS from 'csstype'
-import { DataTypes, Factions, Units } from 'data'
 import { GameTypes } from 'Game'
 import randomize from 'randomatic'
+import { DataTypes, Factions, Units } from 'shared/data'
 
 export const generateId = () => randomize('Aa0', 10)
 

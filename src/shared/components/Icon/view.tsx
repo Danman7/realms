@@ -1,7 +1,6 @@
 import * as CSS from 'csstype'
 import { FC } from 'react'
-
-import { IconName } from '../../../asset/iconNames'
+import { IconName } from 'shared/assets/iconNames'
 
 export interface IconProps {
   /**

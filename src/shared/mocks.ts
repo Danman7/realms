@@ -1,5 +1,5 @@
 import { GameTypes } from 'Game'
-import { createPlayer, createUnit } from 'utils'
+import { createPlayer, createUnit } from 'shared/utils'
 
 export const testPlayer1 = createPlayer('Grog the Great', 'purple', 'Kingdom')
 
