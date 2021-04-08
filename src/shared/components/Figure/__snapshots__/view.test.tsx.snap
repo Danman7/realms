@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Figure /> should match snapshot 1`] = `
+<div
+  aria-label="castle-figure"
+  className="sc-dlfnbm bSijxl"
+>
+  <i
+    className="sc-bdfBwQ bEPUiG creature game-icon game-icon-castle"
+    color="#999"
+  />
+  <i
+    className="sc-gsTCUz bdEUsk shadow game-icon game-icon-castle"
+  />
+</div>
+`;

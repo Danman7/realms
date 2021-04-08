@@ -1,4 +1,4 @@
 {
-  "sort-imports.default-sort-style": "module",
-  "files.eol": "\n"
+  "files.eol": "\n",
+  "sort-imports.default-sort-style": "module"
 }

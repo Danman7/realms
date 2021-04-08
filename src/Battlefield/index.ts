@@ -1,3 +1,3 @@
-import { Battlefield } from './Battlefield'
+import { Battlefield } from './view'
 
 export { Battlefield }

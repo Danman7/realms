@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 import { Theme } from './themes/types'
 
@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     color: ${({ theme }) => theme.colors.text};
     line-height: ${({ theme }) => theme.lineHeights.body};
     margin: 0;
+    letter-spacing: 0.1px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -60,4 +61,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
       font-size: ${({ theme }) => theme.fontSizes[0]};
     }
   }
+`
+
+export const FlexSection = styled.div`
+  display: flex;
+  justify-content: space-between;
 `
