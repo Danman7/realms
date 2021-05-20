@@ -63,6 +63,11 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 `
 
+export const FlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
 export const FlexSection = styled.div`
   display: flex;
   justify-content: space-between;

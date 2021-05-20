@@ -1,9 +1,11 @@
 import { testBattleRegion, testPlayer1, testPlayer2 } from '../../shared/mocks'
 import { render, screen } from '../../shared/test-utils'
-import { Battlefield } from './BattlefieldComponent'
+import { Battlefield, BattlefieldView } from '.'
 
-describe('Battlefield PvP view', () => {
-  beforeEach(() => render(<Battlefield region={testBattleRegion} />))
+describe('Battlefield view', () => {
+  beforeEach(() =>
+    render(<BattlefieldView battlefield={new Battlefield(testBattleRegion)} />)
+  )
 
   it('should render region name', () => {
     expect(

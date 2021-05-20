@@ -19,6 +19,7 @@ export interface Region {
   name: string
   units: UnitTypes.Unit[]
   owner?: Player
+  invader?: Player
 }
 
 export type FactionName = 'Kingdom'

@@ -11,6 +11,7 @@ export const testUnit2 = new Unit('Knights', testPlayer2)
 export const testBattleRegion: GameTypes.Region = {
   id: 1,
   name: 'Mossy Rock',
+  invader: testPlayer1,
   owner: testPlayer2,
   units: [
     testUnit1,

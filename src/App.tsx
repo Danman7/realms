@@ -1,10 +1,10 @@
-import { Battlefield } from './components/Battlefield'
+import { Battlefield, BattlefieldView } from './components/Battlefield'
 import { testBattleRegion } from './shared/mocks'
 
 function App() {
   return (
     <div className="App">
-      <Battlefield region={testBattleRegion} />
+      <BattlefieldView battlefield={new Battlefield(testBattleRegion)} />
     </div>
   )
 }
