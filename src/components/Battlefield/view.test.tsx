@@ -1,18 +1,9 @@
-import { render, screen } from '@testing-library/react'
-import { testBattleRegion, testPlayer1, testPlayer2 } from 'shared/mocks'
-import { defaultTheme } from 'style/themes'
-import { ThemeProvider } from 'styled-components'
-
-import { Battlefield } from './view'
+import { testBattleRegion, testPlayer1, testPlayer2 } from '../../shared/mocks'
+import { render, screen } from '../../shared/test-utils'
+import { Battlefield } from './BattlefieldComponent'
 
 describe('Battlefield PvP view', () => {
-  beforeEach(() =>
-    render(
-      <ThemeProvider theme={defaultTheme}>
-        <Battlefield region={testBattleRegion} />
-      </ThemeProvider>
-    )
-  )
+  beforeEach(() => render(<Battlefield region={testBattleRegion} />))
 
   it('should render region name', () => {
     expect(

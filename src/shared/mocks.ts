@@ -1,11 +1,12 @@
-import { GameTypes } from 'Game'
-import { createPlayer, createUnit } from 'shared/utils'
+import { GameTypes, Player } from '../components/Game'
+import { Unit } from '../components/Unit'
 
-export const testPlayer1 = createPlayer('Grog the Great', 'purple', 'Kingdom')
+export const testPlayer1 = new Player('Grog the Great', 'purple', 'Kingdom')
 
-export const testPlayer2 = createPlayer('Little Jack', 'orange', 'Kingdom')
+export const testPlayer2 = new Player('Little Jack', 'orange', 'Kingdom')
 
-export const testUnit1 = createUnit('Pikemen', testPlayer1)
+export const testUnit1 = new Unit('Pikemen', testPlayer1)
+export const testUnit2 = new Unit('Knights', testPlayer2)
 
 export const testBattleRegion: GameTypes.Region = {
   id: 1,
@@ -13,8 +14,8 @@ export const testBattleRegion: GameTypes.Region = {
   owner: testPlayer2,
   units: [
     testUnit1,
-    createUnit('Knights', testPlayer1),
-    createUnit('Pikemen', testPlayer2),
-    createUnit('Knights', testPlayer2),
+    new Unit('Knights', testPlayer1),
+    new Unit('Pikemen', testPlayer2),
+    testUnit2,
   ],
 }

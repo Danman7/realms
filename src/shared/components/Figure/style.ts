@@ -4,11 +4,12 @@ import styled from 'styled-components'
 interface FigureProps {
   readonly isClickable?: boolean
 }
+const figureSize = '2.5rem'
 
 export const FigureModel = styled.i<FigureProps>`
   position: relative;
   z-index: 1;
-  font-size: 2.5rem;
+  font-size: ${figureSize};
   display: inline-block;
   transform: skewX(6deg);
   color: ${({ color }) => color};
@@ -37,7 +38,7 @@ export const FigureModel = styled.i<FigureProps>`
 `
 
 export const FigureShadow = styled.i`
-  font-size: 2.5rem;
+  font-size: ${figureSize};
   position: absolute;
   top: 0.1em;
   left: 0.35em;

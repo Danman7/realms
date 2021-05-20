@@ -1,5 +1,7 @@
-import { GameTypes } from 'Game'
 import { Machine } from 'xstate'
+
+import { GameTypes } from '../Game'
+import { UnitTypes } from '../Unit'
 
 interface BattleStateSchema {
   states: {
@@ -15,15 +17,15 @@ type BattleEvent =
   | { type: 'RESOLVE' }
 
 interface BattleEngagement {
-  attacker: GameTypes.Unit
-  defender: GameTypes.Unit
+  attacker: UnitTypes.Unit
+  defender: UnitTypes.Unit
 }
 
 interface BattleContext {
   activePlayerId?: GameTypes.Player['id']
-  selectedUnitId?: GameTypes.Unit['id']
-  invadingUnits: GameTypes.Unit[]
-  defendingUnits: GameTypes.Unit[]
+  selectedUnitId?: UnitTypes.Unit['id']
+  invadingUnits: UnitTypes.Unit[]
+  defendingUnits: UnitTypes.Unit[]
   engagements: BattleEngagement[]
 }
 

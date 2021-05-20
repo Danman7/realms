@@ -1,7 +1,7 @@
 import * as CSS from 'csstype'
 import { FC } from 'react'
-import { IconName } from 'shared/assets/iconNames'
 
+import { IconName } from '../../assets/iconNames'
 import { FigureModel, FigureShadow, FigureWrpper } from './style'
 
 export interface FigureProps {

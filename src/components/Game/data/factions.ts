@@ -1,4 +1,4 @@
-import { GameTypes } from 'Game'
+import { GameTypes } from '..'
 
 export const Kingdom: GameTypes.Faction = {
   name: 'Kingdom',

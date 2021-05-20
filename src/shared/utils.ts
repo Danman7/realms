@@ -1,7 +1,4 @@
-import * as CSS from 'csstype'
-import { GameTypes } from 'Game'
 import randomize from 'randomatic'
-import { DataTypes, Factions, Units } from 'shared/data'
 
 export const generateId = () => randomize('Aa0', 10)
 
@@ -21,32 +18,3 @@ export const scrollToElement = (id: string, isSmooth?: boolean) => {
 
 export const getRandomNumber = (minimum: number, maximum: number): number =>
   Math.floor(Math.random() * (maximum - minimum + 1)) + minimum
-
-export const createPlayer = (
-  name: string,
-  color: CSS.Property.Color,
-  factionName: DataTypes.FactionName
-): GameTypes.Player => {
-  const faction = Factions[factionName]
-
-  return {
-    id: generateId(),
-    color,
-    name,
-    faction,
-  }
-}
-
-export const createUnit = (
-  name: DataTypes.UnitName,
-  player: GameTypes.Player
-): GameTypes.Unit => {
-  const unit = Units[name]
-
-  return {
-    ...unit,
-    id: generateId(),
-    current: unit.stats,
-    player,
-  }
-}
