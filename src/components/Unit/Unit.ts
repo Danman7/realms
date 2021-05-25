@@ -9,6 +9,7 @@ export class Unit implements UnitTypes.Unit {
   icon: IconName
   stats: UnitTypes.UnitStats
   current: UnitTypes.UnitStats
+  description?: string
   player?: GameTypes.Player
 
   id = generateId()
@@ -20,6 +21,10 @@ export class Unit implements UnitTypes.Unit {
     this.icon = unit.icon
     this.stats = unit.stats
     this.current = unit.stats
+
+    if (unit.description) {
+      this.description = unit.description
+    }
 
     if (player) {
       this.player = player

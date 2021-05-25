@@ -15,5 +15,10 @@ export interface IconProps {
 }
 
 export const Icon: FC<IconProps> = ({ name, color }) => {
-  return <i className={`game-icon game-icon-${name}`} style={{ color }} />
+  return (
+    <i
+      className={`game-icon game-icon-${name}`}
+      style={{ color, lineHeight: '1.2em' }}
+    />
+  )
 }

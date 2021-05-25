@@ -8,8 +8,9 @@ const figureSize = '2.5rem'
 
 export const FigureModel = styled.i<FigureProps>`
   position: relative;
-  z-index: 1;
+  z-index: 2;
   font-size: ${figureSize};
+  line-height: 1.2em;
   display: inline-block;
   transform: skewX(6deg);
   color: ${({ color }) => color};
@@ -28,17 +29,18 @@ export const FigureModel = styled.i<FigureProps>`
       color: ${theme.colors.primary};
       text-shadow:
       1px -1px 1px ${darken(0.1, theme.colors.primary)},
-    2px -2px 1px ${darken(0.1, theme.colors.primary)},
-    3px -3px 1px ${darken(0.1, theme.colors.primary)},
-    4px -4px 1px ${darken(0.1, theme.colors.primary)},
-    5px -5px 0 ${darken(0.1, theme.colors.primary)};
+      2px -2px 1px ${darken(0.1, theme.colors.primary)},
+      3px -3px 1px ${darken(0.1, theme.colors.primary)},
+      4px -4px 1px ${darken(0.1, theme.colors.primary)},
+      5px -5px 0 ${darken(0.1, theme.colors.primary)};
     }
-
-  `}
+    
+    `}
 `
 
 export const FigureShadow = styled.i`
   font-size: ${figureSize};
+  line-height: 1.2em;
   position: absolute;
   top: 0.1em;
   left: 0.35em;

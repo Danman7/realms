@@ -1,8 +1,8 @@
 import { FC } from 'react'
 
 import { Icon } from '../../../shared/components/Icon'
-import { FlexColumn } from '../../../style/global'
 import { UnitComponent } from '../../Unit'
+import { ForceWrapper } from '../BattlefieldStyles'
 import { BattlefieldTypes } from '..'
 
 interface ForceProps {
@@ -10,9 +10,10 @@ interface ForceProps {
 }
 
 export const Force: FC<ForceProps> = ({ force }) => {
-  const { player, units } = force
+  const { player, units, isDefender } = force
+
   return (
-    <FlexColumn>
+    <ForceWrapper isDefender={isDefender}>
       <div>
         {!!player ? (
           <h2 style={{ color: player.color }}>
@@ -26,6 +27,6 @@ export const Force: FC<ForceProps> = ({ force }) => {
       {units.map((unit) => (
         <UnitComponent key={unit.id} data={unit} />
       ))}
-    </FlexColumn>
+    </ForceWrapper>
   )
 }

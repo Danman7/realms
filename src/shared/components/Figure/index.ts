@@ -1,4 +1,4 @@
-import * as FigureStyles from './style'
-import { Figure } from './view'
+import { Figure } from './Figure'
+import * as FigureStyles from './FigureStyles'
 
 export { Figure, FigureStyles }

@@ -15,10 +15,6 @@ export const defaultTheme: Theme = {
     'map-region-border': '#64513B',
     'map-shoreline': '#1f3846',
   },
-  lineHeights: {
-    body: 1.75,
-    heading: 1.25,
-  },
   boxShadow: '2px 8px 8px -5px rgba(0, 0, 0, 0.3)',
   fontSizes: [
     rem('12.80px'),

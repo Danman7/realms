@@ -16,9 +16,6 @@ interface Theme {
       | 'map-region-border'
       | 'map-shoreline']: CSS.Property.Color
   }
-  lineHeights: {
-    [name in 'body' | 'heading']: number
-  }
   fontSizes: string[]
   fontWeights: {
     [name in 'thin' | 'regular' | 'bold']: number

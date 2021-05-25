@@ -18,6 +18,7 @@ export class Battlefield implements BattlefieldTypes.Battlefield {
       {
         player: owner,
         units: units.filter((unit) => unit.player === owner),
+        isDefender: true,
       },
     ]
     this.activeForce = BattlefieldTypes.ActiveForce.Invader

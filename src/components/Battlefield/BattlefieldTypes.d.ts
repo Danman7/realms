@@ -4,6 +4,7 @@ import { UnitTypes } from '../Unit'
 export interface Force {
   units: UnitTypes.Unit[]
   player?: GameTypes.Player
+  isDefender?: boolean
 }
 
 export enum ActiveForce {

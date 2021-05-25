@@ -15,6 +15,10 @@ export interface UnitTrait {
 
 export interface UnitStats {
   strength: number
+  bonus?: {
+    charge?: number
+    siege?: number
+  }
   traits?: UnitTrait[]
 }
 
@@ -22,6 +26,7 @@ export interface UnitBase {
   name: string
   icon: IconName
   stats: UnitStats
+  description?: string
 }
 
 export interface Unit extends UnitBase {
@@ -32,4 +37,4 @@ export interface Unit extends UnitBase {
 
 export type UnitName = 'Pikemen' | 'Knights'
 
-export type UnitTraitName = 'Reach' | 'Flank'
+export type UnitTraitName = 'Spears' | 'Flank'

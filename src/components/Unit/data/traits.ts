@@ -1,9 +1,9 @@
 import { UnitTypes } from '..'
 
-export const Reach: UnitTypes.UnitTrait = {
-  name: 'Long Reach',
+export const Spears: UnitTypes.UnitTrait = {
+  name: 'Spears',
   description:
-    'Allow this unit to cancel a single enemy charge bonus per turn.',
+    "Allow this unit to cancel a single enemy's charge bonus per turn.",
   icon: 'spears',
 }
 
