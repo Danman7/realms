@@ -1,4 +1,4 @@
-import { Battlefield, BattlefieldView } from './components/Battlefield'
+import { Battlefield, BattlefieldView } from './modules/Battlefield'
 import { testBattleRegion } from './shared/mocks'
 
 function App() {

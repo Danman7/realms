@@ -1,5 +1,5 @@
-import { GameTypes, Player } from '../components/Game'
-import { Unit } from '../components/Unit'
+import { GameTypes, Player } from '../modules/Game'
+import { Unit } from '../modules/Unit'
 
 export const testPlayer1 = new Player('Grog the Great', 'purple', 'Kingdom')
 

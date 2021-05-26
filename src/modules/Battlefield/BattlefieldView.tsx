@@ -5,7 +5,7 @@ import { BattleTitle, BattlefieldWrapper } from './BattlefieldStyles'
 import { Force } from './components/Force'
 import { BattlefieldTypes } from '.'
 
-export interface BattlefieldProps {
+interface BattlefieldProps {
   battlefield: BattlefieldTypes.Battlefield
 }
 

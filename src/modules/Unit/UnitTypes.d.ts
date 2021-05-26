@@ -1,24 +1,15 @@
 import { GameTypes } from 'Game'
 import { IconName } from '../../shared/assets/iconNames'
 
-export interface UnitComponentProps {
-  data: Unit
-  handleClick?: (unit: GameTypes.Unit) => void
-}
-
 export interface UnitTrait {
   name: string
   description: string
   icon: IconName
-  color?: CSS.Property.Color
+  value?: number
 }
 
 export interface UnitStats {
   strength: number
-  bonus?: {
-    charge?: number
-    siege?: number
-  }
   traits?: UnitTrait[]
 }
 
@@ -37,4 +28,4 @@ export interface Unit extends UnitBase {
 
 export type UnitName = 'Pikemen' | 'Knights'
 
-export type UnitTraitName = 'Spears' | 'Flank'
+export type UnitTraitName = 'Spears' | 'Flank' | 'Charge' | 'Siege'

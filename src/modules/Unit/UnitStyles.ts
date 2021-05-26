@@ -6,6 +6,10 @@ interface UnitProps {
   readonly isClickable: boolean
 }
 
+export const UnitWrapper = styled.div`
+  font-size: 1em;
+`
+
 export const StyledUnit = styled.div<UnitProps>`
   display: flex;
   align-items: flex-end;
@@ -15,15 +19,17 @@ export const UnitStatsAndTraits = styled(Box)`
   display: inline-block;
 `
 
-export const Strength = styled.div`
+export const StrengthWrapper = styled.div`
   font-size: 1.5em;
 `
 
 export const TooltipTitle = styled.h3`
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  margin-bottom: 0.2em;
 `
 
 export const FlavorText = styled.div`
+  margin-top: 1em;
   font-style: italic;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
 `

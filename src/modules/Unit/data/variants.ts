@@ -17,9 +17,6 @@ export const Knights: UnitTypes.UnitBase = {
   icon: 'mounted-knight',
   stats: {
     strength: 2,
-    bonus: {
-      charge: 1,
-    },
-    traits: [UnitTraits.Flank],
+    traits: [UnitTraits.Charge, UnitTraits.Flank],
   },
 }

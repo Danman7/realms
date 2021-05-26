@@ -4,7 +4,7 @@ import styled from 'styled-components'
 interface FigureProps {
   readonly isClickable?: boolean
 }
-const figureSize = '2.5rem'
+const figureSize = '4em'
 
 export const FigureModel = styled.i<FigureProps>`
   position: relative;

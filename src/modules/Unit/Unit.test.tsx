@@ -33,7 +33,7 @@ describe('<UnitComponent />', () => {
         <UnitComponent data={testUnit2} />
       </>
     )
-    expect(screen.getAllByLabelText('Spears')).toHaveLength(2)
-    expect(screen.getAllByLabelText('Flanking')).toHaveLength(2)
+    expect(screen.getByLabelText('Spears')).toBeInTheDocument()
+    expect(screen.getByLabelText('Flanking')).toBeInTheDocument()
   })
 })

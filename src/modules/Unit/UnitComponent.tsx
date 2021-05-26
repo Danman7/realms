@@ -3,28 +3,31 @@ import { FC } from 'react'
 import { Figure } from '../../shared/components/Figure'
 import { Icon } from '../../shared/components/Icon'
 import { Tooltip } from '../../shared/components/Tooltip'
-import { FlexSection } from '../../style/global'
+import { Strength } from './components/Strength'
 import {
   FlavorText,
-  Strength,
   StyledUnit,
   TooltipTitle,
   UnitStatsAndTraits,
+  UnitWrapper,
 } from './UnitStyles'
-import { UnitComponentProps } from './UnitTypes'
+import { UnitTypes } from '.'
+
+interface UnitComponentProps {
+  data: UnitTypes.Unit
+  handleClick?: (unit: UnitTypes.Unit) => void
+}
 
 export const UnitComponent: FC<UnitComponentProps> = ({
   data,
   handleClick,
 }) => {
-  const { id, name, icon, player, current, description } = data
+  const { id, name, icon, player, current, description, stats } = data
 
   const { strength, traits } = current
 
-  console.log(name)
-
   return (
-    <>
+    <UnitWrapper>
       <StyledUnit
         onClick={handleClick ? () => handleClick(data) : () => {}}
         isClickable={!!handleClick}
@@ -34,33 +37,27 @@ export const UnitComponent: FC<UnitComponentProps> = ({
       >
         <Figure icon={icon} color={player?.color} isClickable={!!handleClick} />
         <UnitStatsAndTraits>
-          <FlexSection>
-            <Strength aria-label="strength">
-              <Icon name="fist" />
-              {strength}
-            </Strength>
-            {traits &&
-              traits.map((trait) => (
-                <div key={`${id}-${trait.name}-icon`} aria-label={trait.name}>
-                  <Icon name={trait.icon} />
-                </div>
-              ))}
-          </FlexSection>
+          <Strength
+            currentStrength={strength}
+            defaultStrength={stats.strength}
+          />
         </UnitStatsAndTraits>
       </StyledUnit>
 
       <Tooltip id={`unit-tooltip-${id}`}>
         <TooltipTitle>{name}</TooltipTitle>
-        <div>
-          <Icon name="fist" />
-          Strength: {strength}
-        </div>
+        <Strength
+          currentStrength={strength}
+          defaultStrength={stats.strength}
+          showInfo
+        />
 
         {traits &&
           traits.map((trait) => (
             <div key={`${id}-${trait.name}-icon`} aria-label={trait.name}>
               <Icon name={trait.icon} />
-              {trait.name}: {trait.description}
+              {trait.name}
+              {!!trait.value && `(${trait.value})`}: {trait.description}
             </div>
           ))}
         {!!description && (
@@ -69,6 +66,6 @@ export const UnitComponent: FC<UnitComponentProps> = ({
           </FlavorText>
         )}
       </Tooltip>
-    </>
+    </UnitWrapper>
   )
 }
