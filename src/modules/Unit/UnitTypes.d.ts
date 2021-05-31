@@ -20,10 +20,25 @@ export interface UnitBase {
   description?: string
 }
 
+/**
+ * Game-ready unit.
+ * @extends {UnitBase}
+ */
 export interface Unit extends UnitBase {
+  /**
+   * Unique identifier.
+   */
   readonly id: string
-  player?: GameTypes.Player
+  /**
+   * Any changes to the unit's stats happen here.
+   * The stats prop is held for reference.
+   */
   current: UnitStats
+  /**
+   * Holds the unit's owner data,
+   * if it has an owner.
+   */
+  player?: GameTypes.Player
 }
 
 export type UnitName = 'Pikemen' | 'Knights'

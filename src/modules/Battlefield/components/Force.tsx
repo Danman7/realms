@@ -25,7 +25,7 @@ export const Force: FC<ForceProps> = ({ force }) => {
       </div>
 
       {units.map((unit) => (
-        <UnitComponent key={unit.id} data={unit} />
+        <UnitComponent key={unit.id} unit={unit} />
       ))}
     </ForceWrapper>
   )

@@ -10,13 +10,13 @@ interface StrengthProps {
 }
 
 export const Strength: FC<StrengthProps> = ({
-  currentStrength,
-  defaultStrength,
+  currentStrength = 0,
+  defaultStrength = 0,
   showInfo,
 }) => (
   <StrengthWrapper>
     <Icon name="fist" />
-    {showInfo && 'Strength: '}
+    {showInfo ? 'Strength: ' : null}
     {currentStrength}
   </StrengthWrapper>
 )

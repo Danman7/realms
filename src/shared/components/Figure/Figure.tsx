@@ -20,7 +20,7 @@ export interface FigureProps {
 }
 
 export const Figure: FC<FigureProps> = ({
-  icon,
+  icon = 'cross-mark',
   color = '#999',
   isClickable = false,
 }) => {

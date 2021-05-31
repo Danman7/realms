@@ -22,15 +22,15 @@ describe('Unit class', () => {
 
 describe('<UnitComponent />', () => {
   it('should render a figure representing unit', () => {
-    render(<UnitComponent data={testUnit1} />)
+    render(<UnitComponent unit={testUnit1} />)
     expect(screen.getAllByLabelText('pikeman-figure')).toHaveLength(1)
   })
 
   it('should render the units stats and traits', () => {
     render(
       <>
-        <UnitComponent data={testUnit1} />
-        <UnitComponent data={testUnit2} />
+        <UnitComponent unit={testUnit1} />
+        <UnitComponent unit={testUnit2} />
       </>
     )
     expect(screen.getByLabelText('Spears')).toBeInTheDocument()

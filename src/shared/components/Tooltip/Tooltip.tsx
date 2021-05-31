@@ -12,7 +12,7 @@ export interface TooltipProps {
   /**
    * Contents of the tooltip in JSX format.
    */
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const Tooltip: FC<TooltipProps> = ({ id, children }) => {

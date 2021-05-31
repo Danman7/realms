@@ -14,7 +14,7 @@ export interface IconProps {
   color?: CSS.Property.Color
 }
 
-export const Icon: FC<IconProps> = ({ name, color }) => {
+export const Icon: FC<IconProps> = ({ name = 'cross-mark', color }) => {
   return (
     <i
       className={`game-icon game-icon-${name}`}
