@@ -1,10 +1,11 @@
+import { activeIcon } from '../../constants'
 import { testBattleRegion, testPlayer1, testPlayer2 } from '../../shared/mocks'
 import { render, screen } from '../../shared/test-utils'
-import { Battlefield, BattlefieldView } from '.'
+import { Battle, BattlefieldContainer } from '.'
 
 describe('Battlefield view', () => {
   beforeEach(() =>
-    render(<BattlefieldView battlefield={new Battlefield(testBattleRegion)} />)
+    render(<BattlefieldContainer battlefield={new Battle(testBattleRegion)} />)
   )
 
   it('should render region name', () => {
@@ -21,5 +22,9 @@ describe('Battlefield view', () => {
   it('should render the two armies', () => {
     expect(screen.getAllByLabelText('Pikemen')).toHaveLength(2)
     expect(screen.getAllByLabelText('Mounted Knights')).toHaveLength(2)
+  })
+
+  it('should show which player is active', () => {
+    expect(screen.getByTestId(activeIcon)).toBeInTheDocument()
   })
 })

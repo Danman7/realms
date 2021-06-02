@@ -20,26 +20,22 @@ export interface UnitBase {
   description?: string
 }
 
-/**
- * Game-ready unit.
- * @extends {UnitBase}
- */
-export interface Unit extends UnitBase {
-  /**
-   * Unique identifier.
-   */
+export enum UnitState {
+  IDLE,
+  RESERVE,
+  IN_COMBAT,
+  RETREATING,
+  DISBANDED,
+}
+
+export interface ActiveUnit extends UnitBase {
   readonly id: string
-  /**
-   * Any changes to the unit's stats happen here.
-   * The stats prop is held for reference.
-   */
   current: UnitStats
-  /**
-   * Holds the unit's owner data,
-   * if it has an owner.
-   */
+  state: UnitState
   player?: GameTypes.Player
 }
+
+export type UnitClickHandler = (unit: ActiveUnit) => void
 
 export type UnitName = 'Pikemen' | 'Knights'
 

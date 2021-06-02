@@ -2,25 +2,27 @@ import { IconName } from '../../shared/assets/iconNames'
 import { generateId } from '../../shared/utils'
 import { GameTypes } from '../Game'
 import { UnitVariants } from './data'
-import { UnitTypes } from '.'
+import { ActiveUnit, UnitName, UnitState, UnitStats } from './types.d'
 
-export class Unit implements UnitTypes.Unit {
+export class Unit implements ActiveUnit {
   name: string
   icon: IconName
-  stats: UnitTypes.UnitStats
-  current: UnitTypes.UnitStats
+  stats: UnitStats
+  current: UnitStats
+  state: UnitState
   description?: string
   player?: GameTypes.Player
 
   id = generateId()
 
-  constructor(name: UnitTypes.UnitName, player?: GameTypes.Player) {
+  constructor(name: UnitName, player?: GameTypes.Player) {
     const unit = UnitVariants[name]
 
     this.name = unit.name
     this.icon = unit.icon
     this.stats = unit.stats
     this.current = unit.stats
+    this.state = UnitState.IDLE
 
     if (unit.description) {
       this.description = unit.description

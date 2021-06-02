@@ -1,10 +1,10 @@
 import { FC } from 'react'
 
 import { Icon } from '../../../shared/components/Icon'
-import { UnitTypes } from '..'
+import { UnitTrait } from '../types.d'
 
 interface TraitsListProps {
-  traits?: UnitTypes.UnitTrait[]
+  traits?: UnitTrait[]
 }
 
 export const TraitsList: FC<TraitsListProps> = ({ traits = [] }) =>

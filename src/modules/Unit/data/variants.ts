@@ -1,7 +1,7 @@
+import { UnitBase } from '../types.d'
 import * as UnitTraits from './traits'
-import { UnitTypes } from '..'
 
-export const Pikemen: UnitTypes.UnitBase = {
+export const Pikemen: UnitBase = {
   name: 'Pikemen',
   icon: 'pikeman',
   stats: {
@@ -12,7 +12,7 @@ export const Pikemen: UnitTypes.UnitBase = {
     "They don't have much of a training, but bunch them up together, point their spears forward and few charging enemies will survive.",
 }
 
-export const Knights: UnitTypes.UnitBase = {
+export const Knights: UnitBase = {
   name: 'Mounted Knights',
   icon: 'mounted-knight',
   stats: {

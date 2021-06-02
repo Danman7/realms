@@ -1,10 +1,10 @@
-import { Battlefield, BattlefieldView } from './modules/Battlefield'
+import { Battle, BattlefieldContainer } from './modules/Battlefield'
 import { testBattleRegion } from './shared/mocks'
 
 function App() {
   return (
     <div className="App">
-      <BattlefieldView battlefield={new Battlefield(testBattleRegion)} />
+      <BattlefieldContainer battlefield={new Battle(testBattleRegion)} />
     </div>
   )
 }

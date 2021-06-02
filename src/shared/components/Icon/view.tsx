@@ -18,6 +18,7 @@ export const Icon: FC<IconProps> = ({ name = 'cross-mark', color }) => {
   return (
     <i
       className={`game-icon game-icon-${name}`}
+      data-testid={name}
       style={{ color, lineHeight: '1.2em' }}
     />
   )

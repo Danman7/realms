@@ -1,5 +1,6 @@
-import { Battlefield } from './Battlefield'
-import * as BattlefieldTypes from './BattlefieldTypes.d'
-import { BattlefieldView } from './BattlefieldView'
+import { Battle } from './Battle'
+import { BattlefieldContainer } from './BattlefieldContainer'
+import { BattlefieldMachine } from './state/BattlefieldMachine'
+import * as BattlefieldTypes from './types.d'
 
-export { Battlefield, BattlefieldView, BattlefieldTypes }
+export { Battle, BattlefieldContainer, BattlefieldTypes, BattlefieldMachine }

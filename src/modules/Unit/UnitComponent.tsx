@@ -4,6 +4,7 @@ import { Figure } from '../../shared/components/Figure'
 import { Tooltip } from '../../shared/components/Tooltip'
 import { Strength } from './components/Strength'
 import { TraitsList } from './components/TraitsList'
+import { ActiveUnit, UnitClickHandler } from './types.d'
 import {
   FlavorText,
   StyledUnit,
@@ -11,18 +12,17 @@ import {
   UnitStatsAndTraits,
   UnitWrapper,
 } from './UnitStyles'
-import { UnitTypes } from '.'
 
 interface UnitComponentProps {
-  unit: UnitTypes.Unit
-  handleClick?: (unit: UnitTypes.Unit) => void
+  unit: ActiveUnit
+  handleClick?: UnitClickHandler | null
 }
 
 /**
  * Component for displaying a single Unit figure with tooltip.
  *
  * @component
- * @param {UnitTypes.Unit}  unit - Raw unit data.
+ * @param {ActiveUnit}  unit - Raw unit data.
  * @param handleClick - Optional on click handler that receives the unit data.
  * @example
  * <UnitComponent unit={new Unit('Pikemen', player1) />
