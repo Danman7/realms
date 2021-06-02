@@ -21,11 +21,12 @@ export interface UnitBase {
 }
 
 export enum UnitState {
-  IDLE,
-  RESERVE,
-  IN_COMBAT,
-  RETREATING,
-  DISBANDED,
+  IDLE = 'idle',
+  RESERVE = 'in reserve',
+  PRE_COMBAT = 'about to enter combat',
+  IN_COMBAT = 'in combat',
+  RETREATING = 'retreating',
+  DISBANDED = 'disbanded',
 }
 
 export interface ActiveUnit extends UnitBase {

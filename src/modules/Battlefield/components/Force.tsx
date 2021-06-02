@@ -47,7 +47,11 @@ export const Force: FC<ForceProps> = ({ force, battleState, onUnitClick }) => {
         </div>
         <div>
           {units
-            .filter((unit) => unit.state === UnitTypes.UnitState.IN_COMBAT)
+            .filter(
+              (unit) =>
+                unit.state === UnitTypes.UnitState.IN_COMBAT ||
+                unit.state === UnitTypes.UnitState.PRE_COMBAT
+            )
             .map((unit) => (
               <UnitComponent key={unit.id} unit={unit} />
             ))}

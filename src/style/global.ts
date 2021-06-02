@@ -76,6 +76,11 @@ export const FlexSection = styled.div`
   justify-content: space-between;
 `
 
+export const CenterItems = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export const Box = styled.div`
   position: relative;
   border: 1px solid ${({ theme }) => theme.colors.border};

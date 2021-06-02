@@ -6,7 +6,7 @@ import {
   BattleStateSchema,
   ForceType,
 } from '../types.d'
-import { playUnit } from './BattlefieldActions'
+import { playPhaseReady, playUnit } from './BattlefieldActions'
 
 export const BattlefieldMachine = createMachine<
   BattleContext,
@@ -31,13 +31,22 @@ export const BattlefieldMachine = createMachine<
         PLAY_UNIT: {
           actions: assign((context, event) => playUnit(context, event)),
         },
-        READY: { target: 'defenderPlays' },
+        READY: {
+          target: 'defenderPlays',
+          actions: assign((context) => playPhaseReady(context)),
+        },
         RETREAT: { target: 'end' },
       },
     },
     defenderPlays: {
       on: {
-        READY: { target: 'resolve' },
+        PLAY_UNIT: {
+          actions: assign((context, event) => playUnit(context, event)),
+        },
+        READY: {
+          target: 'resolve',
+          actions: assign((context) => playPhaseReady(context)),
+        },
         RETREAT: { target: 'end' },
       },
     },
