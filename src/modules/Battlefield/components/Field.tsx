@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { Button } from '../../../shared/components/Button'
 import { CenterItems, FlexSection } from '../../../style/global'
 import { UnitTypes } from '../../Unit'
 import { ActionsWrapper } from '../BattlefieldStyles'
@@ -56,7 +57,12 @@ export const Field: FC<BattlefieldProps> = ({
       </FlexSection>
       <ActionsWrapper>
         {anyUnitIsInPreCombat(battleContext) ? (
-          <button onClick={handleClickReady}>I am Ready</button>
+          <Button
+            icon="check-mark"
+            onClick={handleClickReady}
+            label="I am ready"
+            color="success"
+          />
         ) : null}
       </ActionsWrapper>
     </>

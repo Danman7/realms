@@ -1,0 +1,17 @@
+import { Meta, IconGallery, IconItem } from '@storybook/addon-docs/blocks'
+
+import { defaultTheme } from '../style/themes'
+import { iconNames } from '../shared/assets/iconNames'
+import { Icon } from '../shared/components/Icon'
+
+<Meta title="Design System/Icons" />
+
+# Icons
+
+<IconGallery>
+  {iconNames.map((iconName) => (
+    <IconItem name={iconName}>
+      <Icon icon={iconName} />
+    </IconItem>
+  ))}
+</IconGallery>

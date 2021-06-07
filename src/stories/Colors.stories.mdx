@@ -1,0 +1,56 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
+import { lighten, darken } from 'polished'
+
+import { defaultTheme } from '../style/themes'
+
+<Meta title="Design System/Colors" />
+
+# UI Element Colors
+
+<ColorPalette>
+  <ColorItem
+    title="theme.colors.primary"
+    subtitle="Gold"
+    colors={[defaultTheme.colors.primary]}
+  />
+  <ColorItem
+    title="theme.colors.secondary"
+    subtitle="Electric Violet"
+    colors={[defaultTheme.colors.secondary]}
+  />
+  <ColorItem
+    title="theme.colors.gray"
+    subtitle="Dusty Gray"
+    colors={[defaultTheme.colors.gray]}
+  />
+  <ColorItem
+    title="theme.colors.text"
+    subtitle="Cocoa Brown"
+    colors={[defaultTheme.colors.text]}
+  />
+  <ColorItem
+    title="theme.colors['book-background']"
+    subtitle="Rose White"
+    colors={[defaultTheme.colors['book-background']]}
+  />
+</ColorPalette>
+
+# Map Colors
+
+<ColorPalette>
+  <ColorItem
+    title="theme.colors['map-land']"
+    subtitle="Amulet"
+    colors={[defaultTheme.colors['map-land']]}
+  />
+  <ColorItem
+    title="theme.colors['map-region-border']"
+    subtitle="Millbrook"
+    colors={[defaultTheme.colors['map-region-border']]}
+  />
+  <ColorItem
+    title="theme.colors['map-shoreline']"
+    subtitle="Blue Dianne"
+    colors={[defaultTheme.colors['map-shoreline']]}
+  />
+</ColorPalette>

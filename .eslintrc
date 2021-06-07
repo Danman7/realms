@@ -13,7 +13,6 @@
       2,
       { "ignoreRefs": true, "allowArrowFunctions": true }
     ],
-    "react/jsx-handler-names": [2, { "checkLocalVariables": true }],
     "react/jsx-key": [2, { "checkFragmentShorthand": true }],
     "react/no-string-refs": [2, { "noTemplateLiterals": true }],
     "react/jsx-max-depth": [2, { "max": 5 }],

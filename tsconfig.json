@@ -17,5 +17,5 @@
     "jsx": "react-jsx",
     "keyofStringsOnly": true
   },
-  "include": ["src"]
+  "include": ["src", ".storybook"]
 }

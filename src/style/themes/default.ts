@@ -7,7 +7,8 @@ export const defaultTheme: Theme = {
     primary: '#ffd700',
     secondary: '#ae00ff',
     gray: '#999',
-    light: '#eee',
+    success: '#5cb85c',
+    danger: '#d9534f',
     text: transparentize(0.2, '#322'),
     border: transparentize(0.9, '#000'),
     background: '#fff9f9',
@@ -30,4 +31,5 @@ export const defaultTheme: Theme = {
     regular: 400,
     bold: 500,
   },
+  animationDuration: '0.2s',
 }
