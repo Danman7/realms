@@ -29,14 +29,25 @@ export const Field: FC<BattlefieldProps> = ({
   owner,
   invader,
 }) => {
-  const { name, color, id } = getActivePlayer(battleState, owner, invader)
+  const activePlayer = getActivePlayer(battleState, owner, invader)
 
   const handleUnitClick: UnitStateClickHandler = (
     unit: UnitTypes.ActiveUnit
   ) => {
-    send('PLAY_UNIT', {
-      unitId: unit.id,
-    })
+    if (
+      battleState === BattleState.INVADER_PLAYS ||
+      battleState === BattleState.DEFENDER_PLAYS
+    ) {
+      send('PLAY_UNIT', {
+        unitId: unit.id,
+      })
+    }
+
+    if (battleState === BattleState.RESOLVE) {
+      send('DAMAGE_UNIT', {
+        unitId: unit.id,
+      })
+    }
   }
 
   const handleClickReady = () => send('READY')
@@ -47,19 +58,21 @@ export const Field: FC<BattlefieldProps> = ({
         <h4>{getCombatStrengthBallance(units, owner, invader)}</h4>
       </CenterItems>
       <CenterItems>
-        <h5 style={{ color }}>{`${name} ${playerBattleTurnMsg}`}</h5>
+        <h5
+          style={{ color: activePlayer?.color }}
+        >{`${activePlayer?.name} ${playerBattleTurnMsg}`}</h5>
       </CenterItems>
       <FlexSection>
         <Force
           units={units.filter((unit) => unit.player.id !== owner.id)}
           player={invader}
           onUnitClick={handleUnitClick}
-          isActive={id === invader.id}
+          isActive={activePlayer?.id === invader.id}
         />
         <Force
           units={units.filter((unit) => unit.player.id === owner.id)}
           player={owner}
-          isActive={id === owner.id}
+          isActive={activePlayer?.id === owner.id}
           isDefender
           onUnitClick={handleUnitClick}
         />

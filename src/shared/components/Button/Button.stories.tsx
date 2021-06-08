@@ -8,7 +8,7 @@ export default {
   title: 'Components/Button',
   component: Button,
   argTypes: {
-    type: {
+    color: {
       control: {
         type: 'select',
         options: ThemeTypes.colorNames,

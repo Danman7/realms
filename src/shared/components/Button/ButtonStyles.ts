@@ -6,6 +6,7 @@ interface ButtonProps {
 }
 
 export const StyledButton = styled.button<ButtonProps>`
+  font-family: 'Roboto Slab', serif;
   font-size: 1.1em;
   cursor: pointer;
   border-radius: 5px;

@@ -4,7 +4,7 @@ import { Icon } from '../../../shared/components/Icon'
 import { GameTypes } from '../../Game'
 import { UnitComponent, UnitTypes } from '../../Unit'
 import { ArmyWrapper, ForceWrapper } from '../BattlefieldStyles'
-import { BattleState, UnitStateClickHandler } from '../types.d'
+import { UnitStateClickHandler } from '../types.d'
 
 interface ForceProps {
   units: UnitTypes.ActiveUnit[]
@@ -25,7 +25,7 @@ export const Force: FC<ForceProps> = ({
 
   return (
     <ForceWrapper isDefender={isDefender}>
-      <DynamicHeading style={{ color: player.color }}>
+      <DynamicHeading style={{ color: player.color, height: '4rem' }}>
         <Icon name={player.faction.icon} /> <span>{player.name}</span>
       </DynamicHeading>
       <ArmyWrapper>

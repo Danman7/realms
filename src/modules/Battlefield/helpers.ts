@@ -16,12 +16,16 @@ export const getActivePlayer = (
   battleState: BattleState,
   owner: GameTypes.Player,
   invader: GameTypes.Player
-): GameTypes.Player => {
+): GameTypes.Player | undefined => {
   if (battleState === BattleState.INVADER_PLAYS) {
     return invader
   }
 
-  return owner
+  if (battleState === BattleState.DEFENDER_PLAYS) {
+    return owner
+  }
+
+  return undefined
 }
 
 export const getUnitsInCombat = (units: UnitTypes.ActiveUnit[]) =>

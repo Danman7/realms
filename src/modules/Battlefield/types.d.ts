@@ -23,11 +23,17 @@ export type PlayUnitEvent = {
   unitId: string
 }
 
+export type DamageUnitEvent = {
+  type: 'DAMAGE_UNIT'
+  unitId: string
+}
+
 export type BattleEvent =
   | { type: 'READY' }
   | { type: 'RETREAT' }
   | { type: 'VICTORY' }
   | PlayUnitEvent
+  | DamageUnitEvent
 
 export interface BattleContext {
   units: UnitTypes.ActiveUnit[]

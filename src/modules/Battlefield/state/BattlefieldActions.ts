@@ -1,5 +1,5 @@
 import { UnitTypes } from '../../Unit'
-import { BattleContext, PlayUnitEvent } from '../types'
+import { BattleContext, DamageUnitEvent, PlayUnitEvent } from '../types'
 
 const { UnitState } = UnitTypes
 
@@ -37,6 +37,29 @@ export const playPhaseReady = (context: BattleContext) => {
         return {
           ...unit,
           state: UnitState.IN_COMBAT,
+        }
+      }
+
+      return unit
+    }),
+  }
+}
+
+export const damageUnit = (context: BattleContext, event: DamageUnitEvent) => {
+  const { units } = context
+  const { unitId } = event
+
+  return {
+    units: units.map((unit) => {
+      if (unit.id === unitId) {
+        const { current } = unit
+
+        return {
+          ...unit,
+          current: {
+            ...current,
+            strength: current.strength - 1,
+          },
         }
       }
 

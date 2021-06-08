@@ -16,9 +16,16 @@ export const decorators = [
 ]
 
 export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
       order: ['Design System', 'Components'],
+    },
+  },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
     },
   },
 }
