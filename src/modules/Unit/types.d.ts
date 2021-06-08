@@ -33,7 +33,7 @@ export interface ActiveUnit extends UnitBase {
   readonly id: string
   current: UnitStats
   state: UnitState
-  player?: GameTypes.Player
+  player: GameTypes.Player
 }
 
 export type UnitClickHandler = (unit: ActiveUnit) => void

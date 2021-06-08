@@ -1,38 +1,41 @@
 import { FC } from 'react'
 
+import { playerBattleTurnMsg } from '../../../constants'
 import { Button } from '../../../shared/components/Button'
 import { CenterItems, FlexSection } from '../../../style/global'
+import { GameTypes } from '../../Game'
 import { UnitTypes } from '../../Unit'
 import { ActionsWrapper } from '../BattlefieldStyles'
-import { anyUnitIsInPreCombat, getCombatStrengthBallance } from '../helpers'
 import {
-  BattleContext,
-  BattleState,
-  ForceType,
-  UnitStateClickHandler,
-} from '../types.d'
+  anyUnitIsInPreCombat,
+  getActivePlayer,
+  getCombatStrengthBallance,
+} from '../helpers'
+import { BattleState, UnitStateClickHandler } from '../types.d'
 import { Force } from './Force'
 
 interface BattlefieldProps {
-  battleContext: BattleContext
   battleState: BattleState
+  units: UnitTypes.ActiveUnit[]
+  owner: GameTypes.Player
+  invader: GameTypes.Player
   send: any // literally no clue how to define this
 }
 
 export const Field: FC<BattlefieldProps> = ({
-  battleContext,
+  units,
   battleState,
   send,
+  owner,
+  invader,
 }) => {
-  const { invadingForce, defendingForce } = battleContext
+  const { name, color, id } = getActivePlayer(battleState, owner, invader)
 
   const handleUnitClick: UnitStateClickHandler = (
-    unit: UnitTypes.ActiveUnit,
-    forceType: ForceType
+    unit: UnitTypes.ActiveUnit
   ) => {
     send('PLAY_UNIT', {
       unitId: unit.id,
-      forceType,
     })
   }
 
@@ -41,22 +44,28 @@ export const Field: FC<BattlefieldProps> = ({
   return (
     <>
       <CenterItems>
-        <h4>{getCombatStrengthBallance(battleContext)}</h4>
+        <h4>{getCombatStrengthBallance(units, owner, invader)}</h4>
+      </CenterItems>
+      <CenterItems>
+        <h5 style={{ color }}>{`${name} ${playerBattleTurnMsg}`}</h5>
       </CenterItems>
       <FlexSection>
         <Force
-          force={invadingForce}
+          units={units.filter((unit) => unit.player.id !== owner.id)}
+          player={invader}
           onUnitClick={handleUnitClick}
-          battleState={battleState as BattleState}
+          isActive={id === invader.id}
         />
         <Force
-          force={defendingForce}
+          units={units.filter((unit) => unit.player.id === owner.id)}
+          player={owner}
+          isActive={id === owner.id}
+          isDefender
           onUnitClick={handleUnitClick}
-          battleState={battleState as BattleState}
         />
       </FlexSection>
       <ActionsWrapper>
-        {anyUnitIsInPreCombat(battleContext) ? (
+        {anyUnitIsInPreCombat(units) ? (
           <Button
             icon="check-mark"
             onClick={handleClickReady}

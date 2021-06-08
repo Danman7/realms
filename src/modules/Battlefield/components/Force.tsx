@@ -1,36 +1,33 @@
 import { FC } from 'react'
 
-import { activeIcon } from '../../../constants'
 import { Icon } from '../../../shared/components/Icon'
+import { GameTypes } from '../../Game'
 import { UnitComponent, UnitTypes } from '../../Unit'
 import { ArmyWrapper, ForceWrapper } from '../BattlefieldStyles'
-import { checkIfIsActiveForceTurn } from '../helpers'
-import { BattleState, ForceType, UnitStateClickHandler } from '../types.d'
-import { BattlefieldTypes } from '..'
+import { BattleState, UnitStateClickHandler } from '../types.d'
 
 interface ForceProps {
-  force: BattlefieldTypes.Force
-  battleState: BattleState
+  units: UnitTypes.ActiveUnit[]
+  isActive: boolean
+  player: GameTypes.Player
+  isDefender?: boolean
   onUnitClick: UnitStateClickHandler
 }
 
-export const Force: FC<ForceProps> = ({ force, battleState, onUnitClick }) => {
-  const { player, units, type } = force
-
-  const isActiveTurn = checkIfIsActiveForceTurn(battleState, force.type)
+export const Force: FC<ForceProps> = ({
+  units,
+  player,
+  isActive,
+  isDefender,
+  onUnitClick,
+}) => {
+  const DynamicHeading = isActive ? 'h2' : 'h3'
 
   return (
-    <ForceWrapper isDefender={type === ForceType.DEFENDER}>
-      <div>
-        {!!player ? (
-          <h2 style={{ color: player.color }}>
-            <Icon name={player.faction.icon} /> <span>{player.name}</span>
-            {isActiveTurn ? <Icon name={activeIcon} /> : null}
-          </h2>
-        ) : (
-          <h2>Local Garrison</h2>
-        )}
-      </div>
+    <ForceWrapper isDefender={isDefender}>
+      <DynamicHeading style={{ color: player.color }}>
+        <Icon name={player.faction.icon} /> <span>{player.name}</span>
+      </DynamicHeading>
       <ArmyWrapper>
         <div>
           {units
@@ -39,9 +36,7 @@ export const Force: FC<ForceProps> = ({ force, battleState, onUnitClick }) => {
               <UnitComponent
                 key={unit.id}
                 unit={unit}
-                handleClick={
-                  isActiveTurn ? (unit) => onUnitClick(unit, force.type) : null
-                }
+                handleClick={isActive ? (unit) => onUnitClick(unit) : null}
               />
             ))}
         </div>

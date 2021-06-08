@@ -4,7 +4,7 @@ import { Unit, UnitComponent } from './'
 
 describe('Unit class', () => {
   it('should create a new neutral unit', () => {
-    const unit = new Unit('Pikemen')
+    const unit = new Unit('Pikemen', testPlayer1)
 
     expect(unit).toHaveProperty('id')
     expect(unit).toHaveProperty('name', 'Pikemen')

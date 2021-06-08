@@ -1,11 +1,6 @@
 import { assign, createMachine } from 'xstate'
 
-import {
-  BattleContext,
-  BattleEvent,
-  BattleStateSchema,
-  ForceType,
-} from '../types.d'
+import { BattleContext, BattleEvent, BattleStateSchema } from '../types.d'
 import { playPhaseReady, playUnit } from './BattlefieldActions'
 
 export const BattlefieldMachine = createMachine<
@@ -16,14 +11,7 @@ export const BattlefieldMachine = createMachine<
   id: 'battlefield',
   initial: 'invaderPlays',
   context: {
-    invadingForce: {
-      units: [],
-      type: ForceType.INVADER,
-    },
-    defendingForce: {
-      units: [],
-      type: ForceType.DEFENDER,
-    },
+    units: [],
   },
   states: {
     invaderPlays: {

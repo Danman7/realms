@@ -1,22 +1,4 @@
-import { GameTypes } from '../Game'
 import { UnitTypes } from '../Unit'
-
-export enum ForceType {
-  INVADER = 'invadingForce',
-  DEFENDER = 'defendingForce',
-}
-
-export interface Force {
-  units: UnitTypes.ActiveUnit[]
-  type: ForceType
-  player?: GameTypes.Player
-}
-
-export interface Battlefield {
-  regionName: string
-  invadingForce: Force
-  defendingForce: Force
-}
 
 export enum BattleState {
   INVADER_PLAYS = 'invaderPlays',
@@ -38,7 +20,6 @@ export interface BattleStateSchema {
 
 export type PlayUnitEvent = {
   type: 'PLAY_UNIT'
-  forceType: ForceType
   unitId: string
 }
 
@@ -49,12 +30,7 @@ export type BattleEvent =
   | PlayUnitEvent
 
 export interface BattleContext {
-  invadingForce: Force
-  defendingForce: Force
-  [key: ForceType]: Force
+  units: UnitTypes.ActiveUnit[]
 }
 
-export type UnitStateClickHandler = (
-  unit: UnitTypes.ActiveUnit,
-  force: ForceType
-) => void
+export type UnitStateClickHandler = (unit: UnitTypes.ActiveUnit) => void

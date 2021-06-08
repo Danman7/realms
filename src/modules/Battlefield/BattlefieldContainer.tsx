@@ -2,35 +2,43 @@ import { useMachine } from '@xstate/react'
 import { FC } from 'react'
 
 import { CenterItems } from '../../style/global'
+import { GameTypes } from '../Game'
 import { BattlefieldWrapper } from './BattlefieldStyles'
 import { Field } from './components/Field'
-import { BattleState, Battlefield } from './types.d'
+import { BattleState } from './types.d'
 import { BattlefieldMachine } from '.'
 
 interface BattlefieldProps {
-  battlefield: Battlefield
+  region: GameTypes.BattleRegion
 }
 
-export const BattlefieldContainer: FC<BattlefieldProps> = ({ battlefield }) => {
-  const { regionName, invadingForce, defendingForce } = battlefield
+export const BattlefieldContainer: FC<BattlefieldProps> = ({ region }) => {
+  const { name, owner, units } = region
   const [current, send] = useMachine(BattlefieldMachine, {
     context: {
-      invadingForce,
-      defendingForce,
+      units: region.units,
     },
     devTools: true,
   })
 
   const { value, context } = current
 
-  return (
+  const invader: GameTypes.Player = units.find(
+    (unit) => unit.player !== owner
+  ).player
+
+  return !invader ? (
+    <h1>This is not a valid battle as there is no invader.</h1>
+  ) : (
     <BattlefieldWrapper>
       <CenterItems>
-        <h1>Battle of {regionName}</h1>
+        <h1>Battle of {name}</h1>
       </CenterItems>
 
       <Field
-        battleContext={context}
+        units={context.units}
+        owner={owner}
+        invader={invader}
         battleState={value as BattleState}
         send={send}
       />

@@ -1,61 +1,57 @@
+import { GameTypes } from '../Game'
 import { UnitTypes } from '../Unit'
-import { BattleContext, BattleState, ForceType } from './types.d'
+import { BattleState } from './types.d'
 
 const { UnitState } = UnitTypes
 
-export const checkIfIsActiveForceTurn = (
+export const prepareRegionForBattle = (region: GameTypes.BattleRegion) => ({
+  ...region,
+  units: region.units.map((unit) => ({
+    ...unit,
+    state: UnitTypes.UnitState.RESERVE,
+  })),
+})
+
+export const getActivePlayer = (
   battleState: BattleState,
-  forceType: ForceType
-): boolean =>
-  (battleState === BattleState.INVADER_PLAYS &&
-    forceType === ForceType.INVADER) ||
-  (battleState === BattleState.DEFENDER_PLAYS &&
-    forceType === ForceType.DEFENDER)
+  owner: GameTypes.Player,
+  invader: GameTypes.Player
+): GameTypes.Player => {
+  if (battleState === BattleState.INVADER_PLAYS) {
+    return invader
+  }
+
+  return owner
+}
+
+export const getUnitsInCombat = (units: UnitTypes.ActiveUnit[]) =>
+  units.filter(
+    (unit) =>
+      unit.state === UnitState.IN_COMBAT || unit.state === UnitState.PRE_COMBAT
+  )
 
 const getCombatStrength = (units: UnitTypes.ActiveUnit[]) =>
   units.reduce((accumulator, currentUnit) => {
     return accumulator + currentUnit.current.strength
   }, 0)
 
-export const getCombatStrengthBallance = (battleContext: BattleContext) => {
-  const { invadingForce, defendingForce } = battleContext
+export const getCombatStrengthBallance = (
+  units: UnitTypes.ActiveUnit[],
+  owner: GameTypes.Player,
+  invader: GameTypes.Player
+) => {
+  const unitsInCombat = getUnitsInCombat(units)
 
   const invadingStrength = getCombatStrength(
-    invadingForce.units.filter(
-      (unit) =>
-        unit.state === UnitState.IN_COMBAT ||
-        unit.state === UnitState.PRE_COMBAT
-    )
+    unitsInCombat.filter((unit) => unit.player.id === invader.id)
   )
 
   const defendingStrength = getCombatStrength(
-    defendingForce.units.filter(
-      (unit) =>
-        unit.state === UnitState.IN_COMBAT ||
-        unit.state === UnitState.PRE_COMBAT
-    )
+    unitsInCombat.filter((unit) => unit.player.id === owner.id)
   )
 
   return `${invadingStrength} : ${defendingStrength}`
 }
 
-export const anyUnitIsInPreCombat = (battleContext: BattleContext) => {
-  const { invadingForce, defendingForce } = battleContext
-
-  return (
-    invadingForce.units.some((unit) => unit.state === UnitState.PRE_COMBAT) ||
-    defendingForce.units.some((unit) => unit.state === UnitState.PRE_COMBAT)
-  )
-}
-
-export const setCombatUnits = (units: UnitTypes.ActiveUnit[]) =>
-  units.map((unit) => {
-    if (unit.state === UnitState.PRE_COMBAT) {
-      return {
-        ...unit,
-        state: UnitState.IN_COMBAT,
-      }
-    }
-
-    return unit
-  })
+export const anyUnitIsInPreCombat = (units: UnitTypes.ActiveUnit[]) =>
+  units.some((unit) => unit.state === UnitState.PRE_COMBAT)
