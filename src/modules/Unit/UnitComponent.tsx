@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Figure } from '../../shared/components/Figure'
+import { Icon } from '../../shared/components/Icon'
 import { Tooltip } from '../../shared/components/Tooltip'
 import { Strength } from './components/Strength'
 import { TraitsList } from './components/TraitsList'
@@ -31,20 +31,19 @@ export const UnitComponent: FC<UnitComponentProps> = ({
   unit,
   handleClick,
 }) => {
-  const { id, name, icon, player, current, description, stats } = unit
+  const { id, name, icon, player, current, description, stats, state } = unit
 
   const { strength, traits } = current
 
   return (
-    <UnitWrapper>
+    <UnitWrapper className={state} isClickable={!!handleClick}>
       <StyledUnit
         onClick={handleClick ? () => handleClick(unit) : () => {}}
-        isClickable={!!handleClick}
         aria-label={name}
         data-tip
         data-for={`unit-tooltip-${id}`}
       >
-        <Figure icon={icon} color={player.color} isClickable={!!handleClick} />
+        <Icon name={icon} size="4rem" />
         <UnitStatsAndTraits>
           <Strength
             currentStrength={strength}

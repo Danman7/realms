@@ -1,31 +1,44 @@
-import { FC, ReactNode } from 'react'
-import { useSpring } from 'react-spring'
+import { FC, ReactNode, useState } from 'react'
+import { useChain, useSpring, useSpringRef } from 'react-spring'
 
 import { Overlay } from '../../../style/global'
-import { animateFade } from '../../animations'
+import { animateFade, animateSlideUpOffScreen } from '../../animations'
 import { StyledModal } from './ModalStyles'
 
 export interface ModalProps {
-  /**
-   * Determines is the modal is open or closed.
-   */
   isOpen: boolean
-  /**
-   * The contents of the modal
-   */
   children: ReactNode
   width?: number
 }
 
 export const Modal: FC<ModalProps> = ({ isOpen, width, children }) => {
-  const fadeInOut = useSpring(animateFade(!isOpen))
+  const fadeRef = useSpringRef()
+  const slideRef = useSpringRef()
 
-  return (
-    <>
-      <StyledModal style={fadeInOut} width={width}>
+  // showAll, not isOpen, controls weather this component renders anything
+  // because it syncs with animations
+  const [showAll, setShowAll] = useState(true)
+
+  const fadeIn = useSpring({ ...animateFade(!isOpen), ref: fadeRef })
+  const slideUp = useSpring({
+    ...animateSlideUpOffScreen(!isOpen),
+    ref: slideRef,
+    onRest: (props) => {
+      const { opacity } = props.value
+
+      if (!opacity) {
+        setShowAll(false)
+      }
+    },
+  })
+
+  useChain(isOpen ? [fadeRef, slideRef] : [slideRef, fadeRef])
+
+  return showAll ? (
+    <Overlay style={fadeIn}>
+      <StyledModal style={slideUp} width={width}>
         {children}
       </StyledModal>
-      <Overlay style={fadeInOut} />
-    </>
-  )
+    </Overlay>
+  ) : null
 }

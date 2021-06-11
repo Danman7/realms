@@ -6,7 +6,7 @@ import { Theme } from './themes/types'
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
-    background: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.surface};
     font-family: 'Roboto Slab', serif;
     font-size: ${({ theme }) => theme.fontSizes[1]};
     color: ${({ theme }) => theme.colors.text};
@@ -75,7 +75,7 @@ interface ElementProps {
 
 const Element = styled.div<ElementProps>`
   height: ${({ height }) => (height ? `${height}px` : 'auto')};
-  padding: ${({ padding }) => (padding ? `${padding}px` : '1rem')};
+  padding: ${({ padding }) => (padding ? `${padding}px` : '0')};
 `
 
 export const FlexColumn = styled(Element)`
@@ -97,10 +97,12 @@ export const Box = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border};
   z-index: 3;
   border-radius: 3px;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.surface};
 `
 
 export const Overlay = styled(animated.div)`
+  display: grid;
+  place-items: center;
   z-index: 1;
   position: absolute;
   background: ${transparentize(0.1, '#000')};

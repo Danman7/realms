@@ -2,15 +2,11 @@ import { FC } from 'react'
 
 import { playerBattleTurnMsg } from '../../../constants'
 import { Button } from '../../../shared/components/Button'
-import { CenterItems, FlexSection } from '../../../style/global'
+import { CenterItems } from '../../../style/global'
 import { GameTypes } from '../../Game'
 import { UnitTypes } from '../../Unit'
-import { ActionsWrapper } from '../BattlefieldStyles'
-import {
-  anyUnitIsInPreCombat,
-  getActivePlayer,
-  getCombatStrengthBallance,
-} from '../helpers'
+import { FieldLine, FieldWrapper } from '../BattlefieldStyles'
+import { anyUnitIsInPreCombat, getActivePlayer } from '../helpers'
 import { BattleState, UnitStateClickHandler } from '../types.d'
 import { Force } from './Force'
 
@@ -53,31 +49,26 @@ export const Field: FC<BattlefieldProps> = ({
   const handleClickReady = () => send('READY')
 
   return (
-    <>
+    <FieldWrapper>
       <CenterItems>
-        <h4>{getCombatStrengthBallance(units, owner, invader)}</h4>
-      </CenterItems>
-      <CenterItems>
-        <h5
+        <div
           style={{ color: activePlayer?.color }}
-        >{`${activePlayer?.name} ${playerBattleTurnMsg}`}</h5>
+        >{`${activePlayer?.name} ${playerBattleTurnMsg}`}</div>
       </CenterItems>
-      <FlexSection>
-        <Force
-          units={units.filter((unit) => unit.player.id !== owner.id)}
-          player={invader}
-          onUnitClick={handleUnitClick}
-          isActive={activePlayer?.id === invader.id}
-        />
-        <Force
-          units={units.filter((unit) => unit.player.id === owner.id)}
-          player={owner}
-          isActive={activePlayer?.id === owner.id}
-          isDefender
-          onUnitClick={handleUnitClick}
-        />
-      </FlexSection>
-      <ActionsWrapper>
+      <Force
+        units={units.filter((unit) => unit.player.id !== owner.id)}
+        onUnitClick={handleUnitClick}
+        isActive={activePlayer?.id === invader.id}
+      />
+      <div style={{ color: invader.color }}>{invader.name}</div>
+      <FieldLine />
+      <div style={{ color: owner.color }}>{owner.name}</div>
+      <Force
+        units={units.filter((unit) => unit.player.id === owner.id)}
+        isActive={activePlayer?.id === owner.id}
+        onUnitClick={handleUnitClick}
+      />
+      <div>
         {anyUnitIsInPreCombat(units) ? (
           <Button
             icon="check-mark"
@@ -86,7 +77,7 @@ export const Field: FC<BattlefieldProps> = ({
             color="success"
           />
         ) : null}
-      </ActionsWrapper>
-    </>
+      </div>
+    </FieldWrapper>
   )
 }

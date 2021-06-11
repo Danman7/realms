@@ -22,9 +22,9 @@ export interface UnitBase {
 
 export enum UnitState {
   IDLE = 'idle',
-  RESERVE = 'in reserve',
-  PRE_COMBAT = 'about to enter combat',
-  IN_COMBAT = 'in combat',
+  RESERVE = 'reserve',
+  PRE_COMBAT = 'pre-combat',
+  IN_COMBAT = 'in-combat',
   RETREATING = 'retreating',
   DISBANDED = 'disbanded',
 }

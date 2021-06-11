@@ -6,13 +6,10 @@ interface StyledModalProps {
 }
 
 export const StyledModal = styled(animated.div)<StyledModalProps>`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 3px outset ${({ theme }) => theme.colors.primary};
   z-index: 3;
   border-radius: 3px;
-  background-color: ${({ theme }) => theme.colors.background};
-  width: ${({ width }) => (width ? `${width}px` : 'clamp(45ch, 50%, 75ch)')};
+  background-color: ${({ theme }) => theme.colors.surface};
+  max-width: ${({ width }) => (width ? `${width}px` : '75ch')};
+  width: 100%;
 `

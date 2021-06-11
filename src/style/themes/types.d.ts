@@ -15,7 +15,7 @@ interface Theme {
       | ColorName
       | 'text'
       | 'border'
-      | 'background'
+      | 'surface'
       | 'map-land'
       | 'map-region-border'
       | 'map-shoreline']: CSS.Property.Color
@@ -25,5 +25,4 @@ interface Theme {
     [name in 'thin' | 'regular' | 'bold']: number
   }
   boxShadow: CSS.Property.BoxShadow
-  animationDuration: CSS.Property.AnimationDuration
 }

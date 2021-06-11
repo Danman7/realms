@@ -24,7 +24,7 @@ export const Tooltip: FC<TooltipProps> = ({ id, children }) => {
         id={id}
         effect="solid"
         borderColor={themeContext.colors.gray}
-        backgroundColor={themeContext.colors.background}
+        backgroundColor={themeContext.colors.surface}
         type="light"
         border
         delayShow={500}

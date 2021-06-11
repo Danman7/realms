@@ -1,7 +1,6 @@
 import { FC } from 'react'
 
 import { Icon } from '../../../shared/components/Icon'
-import { StrengthWrapper } from '../UnitStyles'
 
 interface StrengthProps {
   currentStrength: number
@@ -14,9 +13,9 @@ export const Strength: FC<StrengthProps> = ({
   defaultStrength = 0,
   showInfo,
 }) => (
-  <StrengthWrapper>
+  <div>
     <Icon name="fist" />
     {showInfo ? 'Strength: ' : null}
     {currentStrength}
-  </StrengthWrapper>
+  </div>
 )

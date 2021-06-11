@@ -3,7 +3,6 @@ import { FC } from 'react'
 
 import { CenterItems } from '../../style/global'
 import { GameTypes } from '../Game'
-import { BattlefieldWrapper } from './BattlefieldStyles'
 import { Field } from './components/Field'
 import { BattleState } from './types.d'
 import { BattlefieldMachine } from '.'
@@ -30,7 +29,7 @@ export const BattlefieldContainer: FC<BattlefieldProps> = ({ region }) => {
   return !invader ? (
     <h1>This is not a valid battle as there is no invader.</h1>
   ) : (
-    <BattlefieldWrapper>
+    <div>
       <CenterItems>
         <h1>Battle of {name}</h1>
       </CenterItems>
@@ -42,6 +41,6 @@ export const BattlefieldContainer: FC<BattlefieldProps> = ({ region }) => {
         battleState={value as BattleState}
         send={send}
       />
-    </BattlefieldWrapper>
+    </div>
   )
 }

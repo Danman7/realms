@@ -10,8 +10,8 @@ export const defaultTheme: Theme = {
     success: '#5cb85c',
     danger: '#d9534f',
     text: transparentize(0.2, '#322'),
-    border: transparentize(0.9, '#000'),
-    background: '#fff',
+    border: '#aaa',
+    surface: '#fff',
     'map-land': '#82A775',
     'map-region-border': '#64513B',
     'map-shoreline': '#1f3846',
@@ -31,5 +31,4 @@ export const defaultTheme: Theme = {
     regular: 400,
     bold: 500,
   },
-  animationDuration: '0.2s',
 }

@@ -1,26 +1,42 @@
 import styled from 'styled-components'
 
+import { Icon } from './../../shared/components/Icon/view'
 import { Box } from '../../style/global'
 
-interface UnitProps {
-  readonly isClickable: boolean
+interface UnitWrapperProps {
+  readonly isClickable?: boolean
 }
 
-export const UnitWrapper = styled.div`
-  font-size: 1em;
+export const StyledUnit = styled.div`
+  transition: all 0.2s;
+  position: relative;
+  height: 4rem;
 `
 
-export const StyledUnit = styled.div<UnitProps>`
-  display: flex;
-  align-items: flex-end;
+export const UnitWrapper = styled.div<UnitWrapperProps>`
+  cursor: ${({ isClickable }) => (isClickable ? 'pointer' : 'inherit')};
+
+  &:hover ${StyledUnit} {
+    ${({ isClickable }) =>
+      isClickable &&
+      `
+      transform: scale(1.3);
+      `}
+  }
+
+  i {
+    ${({ isClickable, theme }) =>
+      isClickable &&
+      `
+      text-shadow: 1px 1px ${theme.colors.primary}
+      `}
+  }
 `
 
 export const UnitStatsAndTraits = styled(Box)`
-  display: inline-block;
-`
-
-export const StrengthWrapper = styled.div`
-  font-size: 1.5em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 `
 
 export const TooltipTitle = styled.h3`
