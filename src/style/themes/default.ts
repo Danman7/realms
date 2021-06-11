@@ -1,22 +1,23 @@
-import { rem, transparentize } from 'polished'
+import { rem } from 'polished'
 
 import { Theme } from './types'
 
 export const defaultTheme: Theme = {
   colors: {
-    primary: '#ffd700',
-    secondary: '#ae00ff',
-    gray: '#999',
-    success: '#5cb85c',
-    danger: '#d9534f',
-    text: transparentize(0.2, '#322'),
-    border: '#aaa',
+    primary: '#334955',
+    secondary: '#f9aa33',
+    error: '#F93441',
+    background: '#ecf0f2',
     surface: '#fff',
-    'map-land': '#82A775',
-    'map-region-border': '#64513B',
-    'map-shoreline': '#1f3846',
+    onPrimary: '#fff',
+    onSecondary: '#000',
+    onError: '#000',
+    onBackground: '#000',
+    onSurface: '#000',
+    mapLand: '#82A775',
+    mapRegionBorder: '#64513B',
+    mapShoreline: '#1f3846',
   },
-  boxShadow: '2px 8px 8px -5px rgba(0, 0, 0, 0.3)',
   fontSizes: [
     rem('12.80px'),
     rem('16px'),
@@ -29,6 +30,20 @@ export const defaultTheme: Theme = {
   fontWeights: {
     thin: 300,
     regular: 400,
-    bold: 500,
+    bold: 600,
+  },
+  breakPoints: {
+    large: 1240,
+    medium: 905,
+    small: 600,
+  },
+  gutters: {
+    medium: 32,
+    small: 16,
+  },
+  borderRadius: {
+    large: '24px',
+    medium: '4px',
+    small: '4px',
   },
 }

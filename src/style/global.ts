@@ -6,10 +6,10 @@ import { Theme } from './themes/types'
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
-    background: ${({ theme }) => theme.colors.surface};
+    background: ${({ theme }) => theme.colors.background};
     font-family: 'Roboto Slab', serif;
     font-size: ${({ theme }) => theme.fontSizes[1]};
-    color: ${({ theme }) => theme.colors.text};
+    color: ${({ theme }) => theme.colors.onBackground};
     margin: 0;
     letter-spacing: 0.1px;
     text-align: justify;
@@ -36,22 +36,27 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
     h1 {
       font-size: ${({ theme }) => theme.fontSizes[6]};
+      line-height: ${({ theme }) => theme.fontSizes[6]};
     }
     
     h2 {
       font-size: ${({ theme }) => theme.fontSizes[5]};
+      line-height: ${({ theme }) => theme.fontSizes[5]};
     }
     
     h3 {
       font-size: ${({ theme }) => theme.fontSizes[4]};
+      line-height: ${({ theme }) => theme.fontSizes[4]};
     }
     
     h4 {
       font-size: ${({ theme }) => theme.fontSizes[3]};
+      line-height: ${({ theme }) => theme.fontSizes[3]};
     }
     
     h5 {
       font-size: ${({ theme }) => theme.fontSizes[2]};
+      line-height: ${({ theme }) => theme.fontSizes[2]};
     }
     
     i {
@@ -62,7 +67,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
       font-size: ${({ theme }) => theme.fontSizes[0]};
     }
     
-    p, small, i {
+    p, small {
       width: clamp(45ch, 50%, 75ch);
     }
   }
@@ -78,11 +83,42 @@ const Element = styled.div<ElementProps>`
   padding: ${({ padding }) => (padding ? `${padding}px` : '0')};
 `
 
+export const Grid = styled.div`
+  display: grid;
+
+  @media screen and (min-width: ${({ theme }) =>
+      `${theme.breakPoints.large}px`}) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: ${({ theme }) => theme.gutters.medium}px
+      ${({ theme }) => theme.gutters.medium}px;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      `${theme.breakPoints.large}px`}) {
+    grid-template-columns: repeat(12, 1fr);
+    gap: ${({ theme }) => theme.gutters.medium}px
+      ${({ theme }) => theme.gutters.medium}px;
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      `${theme.breakPoints.medium}px`}) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @media screen and (max-width: ${({ theme }) =>
+      `${theme.breakPoints.small}px`}) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: ${({ theme }) => theme.gutters.small}px
+      ${({ theme }) => theme.gutters.small}px;
+  }
+`
+
 export const FlexColumn = styled(Element)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `
+
 export const FlexSection = styled(Element)`
   display: flex;
   justify-content: space-between;
@@ -93,11 +129,15 @@ export const CenterItems = styled(Element)`
   justify-content: center;
 `
 
-export const Box = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  z-index: 3;
-  border-radius: 3px;
+interface BoxProps {
+  height?: string
+}
+
+export const Box = styled.div<BoxProps>`
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
   background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.onSurface};
+  height: ${({ height }) => height || 'auto'};
 `
 
 export const Overlay = styled(animated.div)`

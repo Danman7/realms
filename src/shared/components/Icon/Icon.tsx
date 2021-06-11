@@ -18,7 +18,7 @@ export const Icon: FC<IconProps> = ({
     <i
       className={`game-icon game-icon-${name}`}
       data-testid={name}
-      style={{ color, fontSize: size, lineHeight: size }}
+      style={{ color, fontSize: size }}
     />
   )
 }

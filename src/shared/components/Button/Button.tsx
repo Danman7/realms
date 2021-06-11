@@ -28,7 +28,7 @@ export const Button: FC<ButtonProps> = ({
   onClick,
   label,
   icon,
-  color = 'gray',
+  color = 'primary',
 }) => {
   return (
     <StyledButton onClick={onClick} color={color}>

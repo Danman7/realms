@@ -9,7 +9,7 @@ export const StyledButton = styled.button<ButtonProps>`
   font-family: 'Roboto Slab', serif;
   font-size: 1.1em;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   border: none;
   padding: 0.5em;
   text-decoration: none;

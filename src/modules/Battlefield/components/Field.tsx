@@ -74,7 +74,6 @@ export const Field: FC<BattlefieldProps> = ({
             icon="check-mark"
             onClick={handleClickReady}
             label="I am ready"
-            color="success"
           />
         ) : null}
       </div>

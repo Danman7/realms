@@ -1,3 +1,3 @@
-import { Icon } from './view'
+import { Icon } from './Icon'
 
 export { Icon }

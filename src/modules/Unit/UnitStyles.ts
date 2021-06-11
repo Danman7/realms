@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { Icon } from './../../shared/components/Icon/view'
+import { Icon } from '../../shared/components/Icon/Icon'
 import { Box } from '../../style/global'
 
 interface UnitWrapperProps {

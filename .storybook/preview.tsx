@@ -19,7 +19,11 @@ export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   options: {
     storySort: {
-      order: ['Design System', 'Components'],
+      order: [
+        'Design System',
+        ['Layout', 'Colors', 'Typography', 'Icons'],
+        'Components',
+      ],
     },
   },
   controls: {
