@@ -26,6 +26,10 @@ export type ColorName = typeof colorNames[number]
 export type TextColorName = typeof textColorNames[number]
 export type MapColorName = typeof mapColorNames[number]
 
+export const elevationLevels = ['1', '2', '3'] as const
+
+export type Elevation = typeof elevationLevels[number]
+
 interface Theme {
   colors: {
     [name in ColorName | TextColorName | MapColorName]: CSS.Property.Color
@@ -40,7 +44,8 @@ interface Theme {
   gutters: {
     [name in 'medium' | 'small']: number
   }
-  borderRadius: {
-    [name in 'large' | 'medium' | 'small']: string
+  elevation: {
+    [name in Elevation]: number
   }
+  borderRadius: string
 }

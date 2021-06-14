@@ -45,9 +45,22 @@ Secondary.args = {
   label: 'A Secondary Button',
 }
 
-export const WithIcon = Template.bind({})
-WithIcon.args = {
+export const Error = Template.bind({})
+Error.args = {
+  color: 'error',
+  label: 'An Error Button',
+}
+
+export const PrimaryWithIcon = Template.bind({})
+PrimaryWithIcon.args = {
   color: 'primary',
   label: 'A Primary Button with an icon',
   icon: 'hooded-figure',
+}
+
+export const SecondaryWithIcon = Template.bind({})
+SecondaryWithIcon.args = {
+  color: 'secondary',
+  label: 'A Secondary Button with an icon',
+  icon: 'siege-tower',
 }

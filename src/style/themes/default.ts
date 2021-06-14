@@ -41,9 +41,10 @@ export const defaultTheme: Theme = {
     medium: 32,
     small: 16,
   },
-  borderRadius: {
-    large: '24px',
-    medium: '4px',
-    small: '4px',
+  borderRadius: '4px',
+  elevation: {
+    '1': 2,
+    '2': 6,
+    '3': 12,
   },
 }

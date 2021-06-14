@@ -20,18 +20,42 @@ export const FluidGrid = Template.bind({})
 FluidGrid.args = {
   children: (
     <>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
-      <Box height="10rem">This is a box.</Box>
+      <Box height="10rem" elevation="1">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="2">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="3">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="1">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="2">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="3">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="1">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="2">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="3">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="1">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="2">
+        This is a box.
+      </Box>
+      <Box height="10rem" elevation="3">
+        This is a box.
+      </Box>
     </>
   ),
 }

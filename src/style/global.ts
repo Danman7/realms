@@ -2,16 +2,16 @@ import { transparentize } from 'polished'
 import { animated } from 'react-spring'
 import styled, { createGlobalStyle } from 'styled-components'
 
-import { Theme } from './themes/types'
+import { Elevation, Theme } from './themes/types'
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   body {
     background: ${({ theme }) => theme.colors.background};
     font-family: 'Roboto Slab', serif;
     font-size: ${({ theme }) => theme.fontSizes[1]};
+    letter-spacing: 0.5px;
     color: ${({ theme }) => theme.colors.onBackground};
     margin: 0;
-    letter-spacing: 0.1px;
     text-align: justify;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -29,7 +29,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     h4,
     h5,
     h6 {
-      font-weight: ${({ theme }) => theme.fontWeights.regular};
       margin: 0;
       padding: 0;
     }
@@ -37,26 +36,36 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     h1 {
       font-size: ${({ theme }) => theme.fontSizes[6]};
       line-height: ${({ theme }) => theme.fontSizes[6]};
+      font-weight: ${({ theme }) => theme.fontWeights.thin};
+      letter-spacing: -1.5px;
     }
     
     h2 {
       font-size: ${({ theme }) => theme.fontSizes[5]};
       line-height: ${({ theme }) => theme.fontSizes[5]};
+      font-weight: ${({ theme }) => theme.fontWeights.thin};
+      letter-spacing: -0.5px;
     }
     
     h3 {
       font-size: ${({ theme }) => theme.fontSizes[4]};
       line-height: ${({ theme }) => theme.fontSizes[4]};
+      font-weight: ${({ theme }) => theme.fontWeights.regular};
+      letter-spacing: 0;
     }
     
     h4 {
       font-size: ${({ theme }) => theme.fontSizes[3]};
       line-height: ${({ theme }) => theme.fontSizes[3]};
+      font-weight: ${({ theme }) => theme.fontWeights.regular};
+      letter-spacing: 0.25px;
     }
     
     h5 {
       font-size: ${({ theme }) => theme.fontSizes[2]};
       line-height: ${({ theme }) => theme.fontSizes[2]};
+      font-weight: ${({ theme }) => theme.fontWeights.regular};
+      letter-spacing: 0;
     }
     
     i {
@@ -87,14 +96,7 @@ export const Grid = styled.div`
   display: grid;
 
   @media screen and (min-width: ${({ theme }) =>
-      `${theme.breakPoints.large}px`}) {
-    grid-template-columns: repeat(12, 1fr);
-    gap: ${({ theme }) => theme.gutters.medium}px
-      ${({ theme }) => theme.gutters.medium}px;
-  }
-
-  @media screen and (max-width: ${({ theme }) =>
-      `${theme.breakPoints.large}px`}) {
+      `${theme.breakPoints.medium}px`}) {
     grid-template-columns: repeat(12, 1fr);
     gap: ${({ theme }) => theme.gutters.medium}px
       ${({ theme }) => theme.gutters.medium}px;
@@ -103,6 +105,8 @@ export const Grid = styled.div`
   @media screen and (max-width: ${({ theme }) =>
       `${theme.breakPoints.medium}px`}) {
     grid-template-columns: repeat(8, 1fr);
+    gap: ${({ theme }) => theme.gutters.medium}px
+      ${({ theme }) => theme.gutters.medium}px;
   }
 
   @media screen and (max-width: ${({ theme }) =>
@@ -131,13 +135,19 @@ export const CenterItems = styled(Element)`
 
 interface BoxProps {
   height?: string
+  elevation?: Elevation
 }
 
 export const Box = styled.div<BoxProps>`
-  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  z-index: ${({ theme, elevation = 1 }) => theme.elevation[elevation]};
+  border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.colors.surface};
   color: ${({ theme }) => theme.colors.onSurface};
   height: ${({ height }) => height || 'auto'};
+  box-shadow: ${({ elevation = 1, theme }) =>
+    `0 0 ${theme.elevation[elevation]}px ${transparentize(0.8, '#000')}, 0 ${
+      theme.elevation[elevation]
+    }px ${theme.elevation[elevation]}px ${transparentize(0.8, '#000')}`};
 `
 
 export const Overlay = styled(animated.div)`
@@ -145,7 +155,7 @@ export const Overlay = styled(animated.div)`
   place-items: center;
   z-index: 1;
   position: absolute;
-  background: ${transparentize(0.1, '#000')};
+  background: ${transparentize(0.5, '#000')};
   top: 0;
   right: 0;
   bottom: 0;

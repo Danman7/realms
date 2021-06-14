@@ -7,23 +7,21 @@ interface ButtonProps {
 
 export const StyledButton = styled.button<ButtonProps>`
   font-family: 'Roboto Slab', serif;
-  font-size: 1.1em;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1.25px;
+  font-size: 1em;
   cursor: pointer;
-  border-radius: ${({ theme }) => theme.borderRadius.small};
+  border-radius: ${({ theme }) => theme.borderRadius};
   border: none;
   padding: 0.5em;
   text-decoration: none;
   color: #fff;
   position: relative;
   display: inline-block;
-  transition: all ${({ theme }) => theme.animationDuration};
-
-  ${({ color, theme }) =>
-    color &&
-    `
-    background-color: ${theme.colors[color]};
-    box-shadow: 0px 5px 0px 0px ${[darken(0.1, theme.colors[color])]};
-    `}
+  background-color: ${({ theme, color }) => theme.colors[color]};
+  box-shadow: ${({ theme, color }) =>
+    `0px 4px 0px ${darken(0.1, theme.colors[color])}`};
 
   i {
     margin-right: 0.5em;
@@ -31,7 +29,9 @@ export const StyledButton = styled.button<ButtonProps>`
 
   &:hover {
     background-color: ${({ theme, color }) =>
-      lighten(0.15, theme.colors[color])};
+      lighten(0.1, theme.colors[color])};
+    box-shadow: ${({ theme, color }) =>
+      `0px 4px 0px ${theme.colors[color]}, 0 4px 4px ${theme.colors[color]}`};
   }
 
   &:active {

@@ -1,9 +1,9 @@
 import { FC, ReactNode, useState } from 'react'
 import { useChain, useSpring, useSpringRef } from 'react-spring'
 
-import { Overlay } from '../../../style/global'
+import { Box, Overlay } from '../../../style/global'
 import { animateFade, animateSlideUpOffScreen } from '../../animations'
-import { StyledModal } from './ModalStyles'
+import { ModalWrapper } from './ModalStyles'
 
 export interface ModalProps {
   isOpen: boolean
@@ -36,9 +36,9 @@ export const Modal: FC<ModalProps> = ({ isOpen, width, children }) => {
 
   return showAll ? (
     <Overlay style={fadeIn}>
-      <StyledModal style={slideUp} width={width}>
-        {children}
-      </StyledModal>
+      <ModalWrapper style={slideUp} width={width}>
+        <Box elevation="3">{children}</Box>
+      </ModalWrapper>
     </Overlay>
   ) : null
 }
