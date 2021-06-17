@@ -1,3 +1,4 @@
+import * as CSS from 'csstype'
 import { config } from 'react-spring'
 
 export const animateFade = (reverse: boolean) => ({
@@ -13,4 +14,13 @@ export const animateSlideUpOffScreen = (reverse: boolean) => ({
   reset: true,
   reverse,
   config: config.gentle,
+})
+
+export const animateActiveIcon = (
+  primary: CSS.Property.Color,
+  secondary: CSS.Property.Color
+) => ({
+  loop: { reverse: true },
+  from: { textShadow: `0 0 1px ${primary}` },
+  to: { textShadow: `0 0 5px ${secondary}` },
 })

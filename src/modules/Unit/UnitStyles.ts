@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { Icon } from '../../shared/components/Icon/Icon'
 import { Box } from '../../style/global'
 
 interface UnitWrapperProps {
@@ -24,7 +23,7 @@ export const UnitWrapper = styled.div<UnitWrapperProps>`
       `}
   }
 
-  i {
+  ${StyledUnit} > i {
     ${({ isClickable, theme }) =>
       isClickable &&
       `

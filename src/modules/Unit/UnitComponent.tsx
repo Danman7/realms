@@ -43,7 +43,12 @@ export const UnitComponent: FC<UnitComponentProps> = ({
         data-tip
         data-for={`unit-tooltip-${id}`}
       >
-        <Icon name={icon} size="4rem" />
+        <Icon
+          name={icon}
+          size="4rem"
+          color={player.color}
+          isActive={!!handleClick}
+        />
         <UnitStatsAndTraits>
           <Strength
             currentStrength={strength}

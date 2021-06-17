@@ -18,12 +18,12 @@ export interface BattleStateSchema {
   }
 }
 
-export type PlayUnitEvent = {
+export interface PlayUnitEvent<T> {
   type: 'PLAY_UNIT'
   unitId: string
 }
 
-export type DamageUnitEvent = {
+export interface DamageUnitEvent<T> {
   type: 'DAMAGE_UNIT'
   unitId: string
 }

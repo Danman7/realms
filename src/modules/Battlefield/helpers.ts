@@ -12,20 +12,20 @@ export const prepareRegionForBattle = (region: GameTypes.BattleRegion) => ({
   })),
 })
 
-export const getActivePlayer = (
+export const getActivePlayerId = (
   battleState: BattleState,
   owner: GameTypes.Player,
   invader: GameTypes.Player
-): GameTypes.Player | undefined => {
+): string => {
   if (battleState === BattleState.INVADER_PLAYS) {
-    return invader
+    return invader.id
   }
 
   if (battleState === BattleState.DEFENDER_PLAYS) {
-    return owner
+    return owner.id
   }
 
-  return undefined
+  return ''
 }
 
 export const getUnitsInCombat = (units: UnitTypes.ActiveUnit[]) =>
